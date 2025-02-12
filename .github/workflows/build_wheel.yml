@@ -13,7 +13,7 @@ on:
 
 jobs:
   osx:
-    runs-on: macos-11
+    runs-on: macos-14
 
     strategy:
       fail-fast: false
@@ -38,7 +38,7 @@ jobs:
     - name: Setup xcode
       uses: maxim-lobanov/setup-xcode@v1
       with:
-        xcode-version: '13.1.0'
+        xcode-version: latest-stable
 
     - name: Build wheel
       run: |
@@ -46,7 +46,7 @@ jobs:
         pip install delocate
         export SDKROOT=$(xcrun --sdk macosx --show-sdk-path)
         if [ ${{ matrix.ARCH }} == "arm64" ]; then
-          export _PYTHON_HOST_PLATFORM=macosx-11.0-arm64
+          export _PYTHON_HOST_PLATFORM=macosx-14.0-arm64
           export ARCHFLAGS="-arch arm64"
           export LIBSODIUM_CONFIG_COMMAND="./configure --host=arm64-apple-darwin"
           export OPENSSL_CONFIG_COMMAND="perl Configure darwin64-arm64-cc"
