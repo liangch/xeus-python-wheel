@@ -44,6 +44,7 @@ jobs:
       run: |
         set -eux
         pip install delocate
+        pip list
         export SDKROOT=$(xcrun --sdk macosx --show-sdk-path)
         if [ ${{ matrix.ARCH }} == "arm64" ]; then
           export _PYTHON_HOST_PLATFORM=macosx-14.0-arm64
