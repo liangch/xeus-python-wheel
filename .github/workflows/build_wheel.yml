@@ -18,7 +18,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        PYTHON_VERSION: ["3.12", "3.13"]
+        PYTHON_VERSION: ["3.13"]
         ARCH: ["arm64"]
 
     env:
@@ -52,7 +52,6 @@ jobs:
           export OPENSSL_CONFIG_COMMAND="perl Configure darwin64-arm64-cc"
           export DCMAKE_OSX_ARCHITECTURES="arm64"
         fi
-        python -m pip install scikit-build
         python -m pip wheel . --verbose -w wheelhouse_dirty
         delocate-wheel -w wheelhouse --require-archs=${{ matrix.arch }} -v wheelhouse_dirty/xeus_python-*.whl
 
