@@ -4,7 +4,7 @@ import sys
 from skbuild import setup
 from skbuild.exceptions import SKBuildError
 from skbuild.cmaker import get_cmake_version
-from packaging.version import LegacyVersion
+#from packaging.version import LegacyVersion
 
 setup_requires = []
 
